@@ -3,7 +3,12 @@ const port = 3000,
   app = express(),
   path = require("path"),
   indexRouter = require("./routes/index"),
-  homeController = require("./controllers/homeController");
+  homeController = require("./controllers/homeController"),
+  layouts = require("express-ejs-layouts");
+
+app.set("view engine", "ejs");
+
+app.use(layouts);
 
 app.use(express.static(path.join(__dirname, "public")));
 

@@ -3,6 +3,8 @@ const router = express.Router();
 const db = require("../db"); // Import the database connection
 const homeController = require("../controllers/homeController");
 
+const userController = require("../controllers/userController");
+
 router.use(
   express.urlencoded({
     extended: false,
@@ -18,18 +20,8 @@ router.use((req, res, next) => {
 
 // Define routes
 
-router.post("/register", async (req, res) => {
-  const { username, password } = req.body;
-  try {
-    const result = await db.query(
-      "INSERT INTO users(username, password) VALUES($1, $2) RETURNING *",
-      [username, password]
-    );
-    res.status(201).send(result.rows[0]);
-  } catch (error) {
-    res.status(500).send(error.message);
-  }
-});
+router.post("/signup", userController.signup);
+router.get("/signup", userController.signupPage);
 
 router.get("/", (req, res) => {
   res.send("Hello from the main route!");
@@ -42,6 +34,8 @@ router.get("/about", (req, res) => {
 router.get("/projects", (req, res) => {
   res.send("This is the projects route");
 });
+
+router.get("/name/:myName", homeController.respondWithName);
 
 router.get("/items/:vegetable", homeController.sendReqParam);
 

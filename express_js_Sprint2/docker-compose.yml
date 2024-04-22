@@ -9,13 +9,13 @@ services:
     depends_on:
       - db
     environment:
-      - DATABASE_URL=postgresql://user:password@db:5432/mydatabase
+      - DATABASE_URL=postgresql://admin:password@db:5432/mydatabase
     command: ["npx", "nodemon", "--legacy-watch", "main.js"]
 
   db:
     image: postgres
     environment:
-      POSTGRES_USER: user
+      POSTGRES_USER: admin
       POSTGRES_PASSWORD: password
       POSTGRES_DB: mydatabase
     ports:

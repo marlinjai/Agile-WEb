@@ -1,3 +1,8 @@
 node_modules/
 recipe_connection/node_modules/
 simple_server/node_modules/
+
+.env
+.env.local
+.env.development
+express_js_Sprint_2/.env
