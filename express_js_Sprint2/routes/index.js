@@ -1,6 +1,8 @@
 const express = require("express");
 const router = express.Router();
 const db = require("../db"); // Import the database connection
+const mainController = require("../controllers/mainController"); // Import the main controller
+
 const homeController = require("../controllers/homeController");
 
 const userController = require("../controllers/userController");
@@ -23,9 +25,10 @@ router.use((req, res, next) => {
 router.post("/signup", userController.signup);
 router.get("/signup", userController.signupPage);
 
-router.get("/", (req, res) => {
-  res.send("Hello from the main route!");
-});
+
+router.get("/signin", userController.signinPage);
+
+router.get("/", mainController.mainPage);
 
 router.get("/about", (req, res) => {
   res.send("Hello from the about route!");

@@ -19,7 +19,10 @@ exports.signup = async (req, res) => {
     res.status(500).json({ message: "Error creating user" });
   }
 };
-
+exports.signinPage = (req, res) => {
+  // Logic for handling the sign-in page route
+  res.render("signin");
+};
 exports.signupPage = (req, res) => {
   // Logic for handling the signup page route
 
