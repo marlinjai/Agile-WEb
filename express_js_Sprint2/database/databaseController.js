@@ -20,17 +20,7 @@ async function createUser(username, email, password) {
 
   return newUser;
 }
-async function createUser(username, email, password) {
-  const newUser = await prisma.user.create({
-    data: {
-      name: username,
-      email: email,
-      password: password,
-    },
-  });
 
-  return newUser;
-}
 
 module.exports = {
   createUser,
